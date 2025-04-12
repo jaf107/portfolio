@@ -29,6 +29,8 @@ import {
   NavHeader,
   NavItem,
   SidebarToggle,
+  Avatar,
+  Text,
 } from "@optiaxiom/react";
 
 const SectionTabs = () => {
@@ -149,8 +151,12 @@ const SectionTabs = () => {
     <div className="flex h-screen overflow-hidden">
       <Sidebar defaultExpanded>
         <Nav>
-          <NavHeader alignItems={"start"}>
-            <span className="font-bold pl-2 text-primary center">AJ</span>
+          <NavHeader alignItems={"start"} my="4">
+            <NavItem icon={<Avatar src="/logo.png" />}>
+              <Text fontSize="lg" fontWeight="700">
+                Abu Jafar
+              </Text>
+            </NavItem>
           </NavHeader>
           <NavBody>
             {navItems.map((item) => (
