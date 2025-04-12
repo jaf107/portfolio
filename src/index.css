@@ -96,7 +96,7 @@
 }
 
 .card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 dark:bg-gray-800/50 dark:border-gray-700;
 }
 
 .staggered-animate > * {
