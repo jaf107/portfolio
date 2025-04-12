@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import Hero from '@/components/Hero';
 import SectionTabs from '@/components/SectionTabs';
 import Footer from '@/components/Footer';
 
@@ -28,7 +27,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Hero />
       <SectionTabs />
       <Footer />
     </div>

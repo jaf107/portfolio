@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Briefcase, Code, FileText, Award, GraduationCap, Mail, Sparkles, Brain, User, Home } from 'lucide-react';
+import { Briefcase, Code, FileText, Award, GraduationCap, Mail, Sparkles, Brain, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import Experience from './Experience';
 import Projects from './Projects';
 import Research from './Research';
@@ -8,7 +8,9 @@ import Skills from './Skills';
 import Awards from './Awards';
 import Education from './Education';
 import Contact from './Contact';
+import Hero from './Hero';
 import { ThemeToggle } from './ThemeToggle';
+import { Button } from './ui/button';
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +23,7 @@ import {
 
 const SectionTabs = () => {
   const [activeSection, setActiveSection] = useState("about");
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     // Handle initial hash in URL
@@ -39,6 +42,10 @@ const SectionTabs = () => {
     window.scrollTo(window.pageXOffset, scrollPosition);
   };
 
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navItems = [
     { id: "about", label: "About", icon: <User size={20} /> },
     { id: "experience", label: "Experience", icon: <Briefcase size={20} /> },
@@ -50,11 +57,11 @@ const SectionTabs = () => {
     { id: "contact", label: "Contact", icon: <Mail size={20} /> },
   ];
 
-  // Simple About component
+  // About component
   const About = () => (
     <section id="about" className="py-16">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">About Me</h2>
+        <h2 className="text-3xl font-bold mb-6 text-primary">About Me</h2>
         <div className="prose dark:prose-invert max-w-none">
           <p className="text-lg mb-4">
             I'm Abu Jafar, a software engineer passionate about building innovative solutions.
@@ -73,66 +80,57 @@ const SectionTabs = () => {
   );
 
   return (
-    <div className="py-10 bg-secondary/10">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row gap-6">
-          <SidebarProvider defaultOpen={true}>
-            <Sidebar className="w-auto shadow-md rounded-lg">
-              <SidebarContent>
-                <div className="py-4 px-3">
-                  <span className="text-xl font-bold text-primary">Abu Jafar</span>
+    <div className="relative flex-1 flex">
+      <SidebarProvider defaultOpen={isOpen}>
+        <div className="flex min-h-screen w-full">
+          <Sidebar className="shadow-md rounded-none border-r h-screen">
+            <SidebarContent>
+              <div className="py-4 px-3">
+                <span className="text-xl font-bold text-primary">Abu Jafar</span>
+              </div>
+              <SidebarMenu>
+                {navItems.map((item) => (
+                  <SidebarMenuItem key={item.id}>
+                    <SidebarMenuButton 
+                      onClick={() => handleSectionChange(item.id)}
+                      isActive={activeSection === item.id}
+                      tooltip={item.label}
+                    >
+                      {item.icon}
+                      <span>{item.label}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+              <SidebarFooter className="mt-auto">
+                <div className="flex flex-col gap-3 p-4">
+                  <ThemeToggle />
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    onClick={toggleSidebar} 
+                    className="mt-2"
+                    aria-label="Toggle sidebar"
+                  >
+                    {isOpen ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+                  </Button>
                 </div>
-                <SidebarMenu>
-                  {navItems.map((item) => (
-                    <SidebarMenuItem key={item.id}>
-                      <SidebarMenuButton 
-                        onClick={() => handleSectionChange(item.id)}
-                        isActive={activeSection === item.id}
-                        tooltip={item.label}
-                      >
-                        {item.icon}
-                        <span>{item.label}</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-                <SidebarFooter className="mt-auto">
-                  <div className="flex justify-center py-4">
-                    <ThemeToggle />
-                  </div>
-                </SidebarFooter>
-              </SidebarContent>
-            </Sidebar>
+              </SidebarFooter>
+            </SidebarContent>
+          </Sidebar>
           
-            <div className="flex-1">
-              <div className={activeSection === "about" ? "block" : "hidden"}>
-                <About />
-              </div>
-              <div className={activeSection === "experience" ? "block" : "hidden"}>
-                <Experience />
-              </div>
-              <div className={activeSection === "projects" ? "block" : "hidden"}>
-                <Projects />
-              </div>
-              <div className={activeSection === "research" ? "block" : "hidden"}>
-                <Research />
-              </div>
-              <div className={activeSection === "skills" ? "block" : "hidden"}>
-                <Skills />
-              </div>
-              <div className={activeSection === "awards" ? "block" : "hidden"}>
-                <Awards />
-              </div>
-              <div className={activeSection === "education" ? "block" : "hidden"}>
-                <Education />
-              </div>
-              <div className={activeSection === "contact" ? "block" : "hidden"}>
-                <Contact />
-              </div>
-            </div>
-          </SidebarProvider>
+          <main className="flex-1 overflow-auto p-6 pb-20 bg-background">
+            {activeSection === "about" && <About />}
+            {activeSection === "experience" && <Experience />}
+            {activeSection === "projects" && <Projects />}
+            {activeSection === "research" && <Research />}
+            {activeSection === "skills" && <Skills />}
+            {activeSection === "awards" && <Awards />}
+            {activeSection === "education" && <Education />}
+            {activeSection === "contact" && <Contact />}
+          </main>
         </div>
-      </div>
+      </SidebarProvider>
     </div>
   );
 };
