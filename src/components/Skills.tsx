@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Code, Database, Terminal, Layout, Server, Tool } from 'lucide-react';
+import { Code, Database, Terminal, Layout, Server, Wrench } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -89,7 +89,7 @@ const Skills = () => {
           
           <SkillCategory 
             title="Tools" 
-            icon={<Tool size={20} />} 
+            icon={<Wrench size={20} />} 
             skills={tools} 
           />
           
