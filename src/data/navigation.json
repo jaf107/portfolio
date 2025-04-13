@@ -1,4 +1,3 @@
-
 [
   {
     "id": "about",
@@ -34,11 +33,6 @@
     "id": "education",
     "label": "Education",
     "icon": "GraduationCap"
-  },
-  {
-    "id": "resume",
-    "label": "Resume",
-    "icon": "FileText"
   },
   {
     "id": "contact",
