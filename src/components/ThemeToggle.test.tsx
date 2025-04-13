@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeToggle } from './ThemeToggle';
 import { ThemeProvider } from '../providers/ThemeProvider';
-import { vi } from 'vitest';
+import { expect, describe, it, vi } from 'vitest';
 
 describe('ThemeToggle', () => {
   it('renders correctly', () => {
