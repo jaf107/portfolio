@@ -45,4 +45,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           force_orphan: true
-          commit_message: '🚀 Deploy latest changes'
+          commit_message: 'Deploy latest changes'
