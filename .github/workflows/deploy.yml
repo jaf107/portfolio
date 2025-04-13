@@ -1,3 +1,4 @@
+
 name: Deploy to GitHub Pages
 
 on:
@@ -31,7 +32,15 @@ jobs:
           cache: 'pnpm'
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: Update Base URL for GitHub Pages
+        run: |
+          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          if [ "$GITHUB_REPOSITORY_OWNER" != "$GITHUB_ACTOR" ]; then
+            echo "Updating Vite config for GitHub Pages deployment at /$REPO_NAME/"
+            sed -i "s|base: \"/\"|base: \"/$REPO_NAME/\"|g" vite.config.ts
+          fi
 
       - name: Build
         run: pnpm run build
@@ -41,8 +50,12 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           force_orphan: true
           commit_message: 'Deploy latest changes'
+
+      - name: Deploy Status
+        run: echo "Deployment completed successfully!"
