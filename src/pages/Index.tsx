@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import SectionTabs from '@/components/SectionTabs';
-import Footer from '@/components/Footer';
+import NavLinks from '@/components/NavLinks';
 
 const Index = () => {
   // Add scroll animation to reveal elements as they come into view
@@ -27,8 +27,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <NavLinks />
       <SectionTabs />
-      <Footer />
     </div>
   );
 };

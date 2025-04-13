@@ -12,6 +12,7 @@ import {
   Brain,
   User,
   ListCollapse,
+  FileText
 } from "lucide-react";
 import Experience from "./Experience";
 import Projects from "./Projects";
@@ -21,6 +22,7 @@ import Awards from "./Awards";
 import Education from "./Education";
 import Contact from "./Contact";
 import Hero from "./Hero";
+import Resume from "./Resume";
 import {
   Sidebar,
   Nav,
@@ -71,6 +73,8 @@ const SectionTabs = () => {
         return <Award size={20} />;
       case 'GraduationCap':
         return <GraduationCap size={20} />;
+      case 'FileText':
+        return <FileText size={20} />;
       case 'Mail':
         return <Mail size={20} />;
       default:
@@ -95,6 +99,8 @@ const SectionTabs = () => {
         return <Awards />;
       case "education":
         return <Education />;
+      case "resume":
+        return <Resume />;
       case "contact":
         return <Contact />;
       default:

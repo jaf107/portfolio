@@ -36,6 +36,11 @@
     "icon": "GraduationCap"
   },
   {
+    "id": "resume",
+    "label": "Resume",
+    "icon": "FileText"
+  },
+  {
     "id": "contact",
     "label": "Contact",
     "icon": "Mail"

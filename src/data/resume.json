@@ -1,0 +1,66 @@
+
+{
+  "title": "Resume",
+  "description": "My professional resume and qualifications",
+  "resumeUrl": "#",
+  "sections": [
+    {
+      "title": "Education",
+      "items": [
+        {
+          "degree": "B.Sc in Computer Science and Engineering",
+          "institution": "Bangladesh University of Engineering and Technology (BUET)",
+          "duration": "2018 - 2023",
+          "description": "Graduated with a focus on Artificial Intelligence and Software Engineering"
+        }
+      ]
+    },
+    {
+      "title": "Experience",
+      "items": [
+        {
+          "position": "Software Engineer",
+          "company": "Therap BD Ltd.",
+          "duration": "2023 - Present",
+          "description": "Working on web application development using Java, Spring Boot, and React"
+        },
+        {
+          "position": "Software Engineer Intern",
+          "company": "Therap BD Ltd.",
+          "duration": "2022 - 2023",
+          "description": "Developed and maintained Java-based enterprise applications"
+        }
+      ]
+    },
+    {
+      "title": "Skills",
+      "items": [
+        {
+          "category": "Programming Languages",
+          "skills": "Java, JavaScript, TypeScript, Python, C++"
+        },
+        {
+          "category": "Frameworks & Libraries",
+          "skills": "React, Spring Boot, Node.js, Express.js"
+        },
+        {
+          "category": "Tools & Platforms",
+          "skills": "Git, Docker, AWS, Firebase"
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "items": [
+        {
+          "name": "E-commerce Platform",
+          "description": "Built a full-stack e-commerce platform with React and Node.js"
+        },
+        {
+          "name": "AI-based Recommendation System",
+          "description": "Developed a recommendation system using machine learning algorithms"
+        }
+      ]
+    }
+  ]
+}
