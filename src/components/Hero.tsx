@@ -10,8 +10,7 @@ import { Button } from "@/components/ui/button";
 import aboutData from "../data/about.json";
 
 const Hero = () => {
-  const { name, title, bio, phone, email, academicInterests, socialLinks } =
-    aboutData;
+  const { name, title, bio, phone, email, socialLinks } = aboutData;
 
   return (
     <section
@@ -63,16 +62,6 @@ const Hero = () => {
                   Resume
                 </a>
               </Button>
-              <Button variant="outline" asChild className="gap-2">
-                <a
-                  href={socialLinks.publications}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <BookOpen size={18} />
-                  Publications
-                </a>
-              </Button>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
@@ -84,10 +73,7 @@ const Hero = () => {
                 <span>{email}</span>
               </div>
             </div>
-            <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-              <h3 className="text-lg font-medium mb-2">Academic Interests</h3>
-              <p className="text-muted-foreground">{academicInterests}</p>
-            </div>
+            <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10"></div>
           </div>
           <div className="w-full md:w-2/5 flex justify-center md:justify-end animate-fade-in">
             <div className="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
