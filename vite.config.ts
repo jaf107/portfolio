@@ -19,4 +19,9 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Add additional build options for test environment if needed
+  build: {
+    sourcemap: mode === "development",
+    reportCompressedSize: true,
+  },
 }));
