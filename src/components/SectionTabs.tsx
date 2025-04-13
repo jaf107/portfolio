@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-
 import {
   Briefcase,
   Code,
@@ -32,10 +32,10 @@ import {
   Avatar,
   Text,
 } from "@optiaxiom/react";
+import navigationData from '../data/navigation.json';
 
 const SectionTabs = () => {
   const { theme, setTheme } = useTheme();
-
   const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
@@ -54,74 +54,29 @@ const SectionTabs = () => {
     window.scrollTo(window.pageXOffset, scrollPosition);
   };
 
-  const navItems = [
-    {
-      id: "about",
-      label: "About",
-      icon: <User size={20} />,
-    },
-    {
-      id: "experience",
-      label: "Experience",
-      icon: <Briefcase size={20} />,
-    },
-    {
-      id: "projects",
-      label: "Projects",
-      icon: <Code size={20} />,
-    },
-    {
-      id: "research",
-      label: "Research",
-      icon: <Brain size={20} />,
-    },
-    {
-      id: "skills",
-      label: "Skills",
-      icon: <Sparkles size={20} />,
-    },
-    {
-      id: "awards",
-      label: "Awards",
-      icon: <Award size={20} />,
-    },
-    {
-      id: "education",
-      label: "Education",
-      icon: <GraduationCap size={20} />,
-    },
-    {
-      id: "contact",
-      label: "Contact",
-      icon: <Mail size={20} />,
-    },
-  ];
-
-  // About component
-  const About = () => (
-    <section id="about" className="py-16">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold mb-6 text-primary">About Me</h2>
-        <div className="prose dark:prose-invert max-w-none">
-          <p className="text-lg mb-4">
-            I'm Abu Jafar, a software engineer passionate about building
-            innovative solutions.
-          </p>
-          <p className="mb-6">
-            Currently, I'm looking for PhD & Masters opportunities in the fields
-            of Software Engineering, AI/ML, and Security. My research interests
-            include developing secure and efficient software systems powered by
-            machine learning.
-          </p>
-          <p>
-            With a strong background in software development and research, I aim
-            to contribute to the advancement of technology through rigorous
-            academic exploration and practical applications.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
+  // Get icon component based on icon name from navigation data
+  const getIconComponent = (iconName) => {
+    switch (iconName) {
+      case 'User':
+        return <User size={20} />;
+      case 'Briefcase':
+        return <Briefcase size={20} />;
+      case 'Code':
+        return <Code size={20} />;
+      case 'Brain':
+        return <Brain size={20} />;
+      case 'Sparkles':
+        return <Sparkles size={20} />;
+      case 'Award':
+        return <Award size={20} />;
+      case 'GraduationCap':
+        return <GraduationCap size={20} />;
+      case 'Mail':
+        return <Mail size={20} />;
+      default:
+        return <User size={20} />;
+    }
+  };
 
   // Render content based on active section
   const renderContent = () => {
@@ -159,11 +114,11 @@ const SectionTabs = () => {
             </NavItem>
           </NavHeader>
           <NavBody>
-            {navItems.map((item) => (
+            {navigationData.map((item) => (
               <NavItem
                 key={item.id}
                 id={item.id}
-                icon={item.icon}
+                icon={getIconComponent(item.icon)}
                 onClick={() => handleSectionChange(item.id)}
               >
                 {item.label}

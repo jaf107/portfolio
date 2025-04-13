@@ -1,0 +1,39 @@
+
+{
+  "contactInfo": [
+    {
+      "title": "Email",
+      "value": "jafarmahin107@gmail.com",
+      "href": "mailto:jafarmahin107@gmail.com",
+      "icon": "Mail"
+    },
+    {
+      "title": "Phone",
+      "value": "+880 171 774 3519",
+      "href": "tel:+8801717743519",
+      "icon": "Phone"
+    },
+    {
+      "title": "LinkedIn",
+      "value": "Abu Jafar Saifullah",
+      "href": "https://www.linkedin.com/in/abu-jafar-saifullah/",
+      "icon": "Linkedin"
+    },
+    {
+      "title": "GitHub",
+      "value": "jaf107",
+      "href": "https://github.com/jaf107",
+      "icon": "Github"
+    },
+    {
+      "title": "Location",
+      "value": "Dhaka, Bangladesh",
+      "icon": "MapPin"
+    }
+  ],
+  "message": "I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+  "callToAction": {
+    "title": "Let's Build Something Together",
+    "description": "I'm open to freelance opportunities, full-time positions, and collaborations on interesting projects."
+  }
+}

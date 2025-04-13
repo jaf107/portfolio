@@ -1,0 +1,26 @@
+
+{
+  "experience": [
+    {
+      "title": "Research Intern",
+      "organization": "SEMERU LAB, William & Mary",
+      "period": "Aug, 2023 - Present",
+      "points": [
+        "Created a programming language-specific tokenizer to improve NLP model predictions",
+        "Collaborated with the team on various research projects"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Text Summarizer Tool",
+      "technologies": ["Java", "JavaFX", "SPL 1"],
+      "description": "Research project where input text is summarized using extractive techniques."
+    },
+    {
+      "title": "Clippy",
+      "technologies": ["Angular", "NodeJS", "ICSE SCORE"],
+      "description": "Empowering paper reading with intelligent features like cross-referencing, summarization, and knowledge graph generation."
+    }
+  ]
+}

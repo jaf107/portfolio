@@ -2,6 +2,7 @@
 import React from 'react';
 import { Award, Trophy } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import awardsData from '../data/awards.json';
 
 interface AwardItemProps {
   title: string;
@@ -35,41 +36,14 @@ const Awards = () => {
         <h2 className="section-title">Awards & Achievements</h2>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 staggered-animate">
-          <AwardItem
-            title="Champion"
-            description="In Refactoring Competition"
-            year="2023"
-          />
-          
-          <AwardItem
-            title="Best UI/UX"
-            description="At Hackathon"
-            year="2023"
-          />
-          
-          <AwardItem
-            title="Top 6"
-            description="In SCORE-ICSE"
-            year="2023"
-          />
-          
-          <AwardItem
-            title="Champions"
-            description="In Refactoring Competition"
-            year="2023"
-          />
-          
-          <AwardItem
-            title="Champion"
-            description="In Project Showcasing"
-            year="2022"
-          />
-          
-          <AwardItem
-            title="Runners Up"
-            description="Project Showcasing"
-            year="2021"
-          />
+          {awardsData.map((award, index) => (
+            <AwardItem
+              key={index}
+              title={award.title}
+              description={award.description}
+              year={award.year}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { Github, ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import projectsData from '../data/projects.json';
 
 interface ProjectItemProps {
   title: string;
@@ -62,26 +63,16 @@ const Projects = () => {
         <h2 className="section-title">Academic Projects</h2>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 staggered-animate">
-          <ProjectItem
-            title="API Miners GPT"
-            description="Engineered enhanced ChatGPT using OpenAI and Stable Diffusion APIs, featuring audio I/O, OCR, and a child book generator, with an integrated bookstore for content distribution."
-            technologies={[".NET", "ReactJS", "OpenAI API", "Hackathon"]}
-            githubLink="https://github.com/jaf107/API-Miners-GPT"
-          />
-          
-          <ProjectItem
-            title="Mr. Bin"
-            description="Web app that connects recyclers and sellers in order to encourage recycling and sell useless products. SPL 2 project."
-            technologies={["MERN", "SpringBoot", "TensorFlow", "Maps API"]}
-            githubLink="https://github.com/jaf107/Mr-Bin"
-          />
-          
-          <ProjectItem
-            title="MiniFacebook"
-            description="Developed web app with Status, Story services in a Service Oriented Architecture. Distributed system project."
-            technologies={["MERN", "NodeJS", "Docker", "Nginx"]}
-            githubLink="https://github.com/jaf107/MiniFacebook"
-          />
+          {projectsData.map((project, index) => (
+            <ProjectItem
+              key={index}
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              githubLink={project.githubLink}
+              demoLink={project.demoLink}
+            />
+          ))}
         </div>
       </div>
     </section>

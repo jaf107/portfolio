@@ -3,6 +3,7 @@ import React from 'react';
 import { Code, Database, Terminal, Layout, Server, Wrench } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import skillsData from '../data/skills.json';
 
 interface SkillCategoryProps {
   title: string;
@@ -33,29 +34,25 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, icon, skills }) =>
 };
 
 const Skills = () => {
-  const programmingLanguages = [
-    "Python", "C#", "C++", "Java", "JavaScript", "TypeScript"
-  ];
-
-  const concepts = [
-    "OOP", "REST API", "Design Patterns", "SOA", "Microservices"
-  ];
-
-  const webFrameworks = [
-    ".NET", "ReactJS", "SpringBoot", "NodeJS", "Next.js", "Express"
-  ];
-
-  const databases = [
-    "MSSQL", "MongoDB", "MySQL", "PostgreSQL"
-  ];
-
-  const tools = [
-    "Git", "Postman", "Azure", "Docker", "Nginx", "AWS", "CI/CD"
-  ];
-
-  const softSkills = [
-    "Problem Solving", "Team Collaboration", "Agile Development", "Technical Writing"
-  ];
+  // Icon mapping
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Code':
+        return <Code size={20} />;
+      case 'Terminal':
+        return <Terminal size={20} />;
+      case 'Layout':
+        return <Layout size={20} />;
+      case 'Database':
+        return <Database size={20} />;
+      case 'Wrench':
+        return <Wrench size={20} />;
+      case 'Server':
+        return <Server size={20} />;
+      default:
+        return <Code size={20} />;
+    }
+  };
 
   return (
     <section id="skills" className="py-16 bg-secondary/50">
@@ -63,46 +60,19 @@ const Skills = () => {
         <h2 className="section-title">Skills</h2>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 staggered-animate">
-          <SkillCategory 
-            title="Programming Languages" 
-            icon={<Code size={20} />} 
-            skills={programmingLanguages} 
-          />
-          
-          <SkillCategory 
-            title="Concepts" 
-            icon={<Terminal size={20} />} 
-            skills={concepts} 
-          />
-          
-          <SkillCategory 
-            title="Web Frameworks" 
-            icon={<Layout size={20} />} 
-            skills={webFrameworks} 
-          />
-          
-          <SkillCategory 
-            title="Databases" 
-            icon={<Database size={20} />} 
-            skills={databases} 
-          />
-          
-          <SkillCategory 
-            title="Tools" 
-            icon={<Wrench size={20} />} 
-            skills={tools} 
-          />
-          
-          <SkillCategory 
-            title="Soft Skills" 
-            icon={<Server size={20} />} 
-            skills={softSkills} 
-          />
+          {skillsData.categories.map((category, index) => (
+            <SkillCategory 
+              key={index}
+              title={category.title} 
+              icon={getIcon(category.icon)} 
+              skills={category.skills} 
+            />
+          ))}
         </div>
 
         <div className="mt-10 text-center">
           <p className="text-muted-foreground">
-            <span className="font-semibold">Problem Solving:</span> Solved 600+ problems in CodeForces, Leetcode
+            {skillsData.problemSolving}
           </p>
         </div>
       </div>

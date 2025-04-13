@@ -1,0 +1,44 @@
+
+[
+  {
+    "company": "Optimizely, Dhaka",
+    "position": "Software Engineer I",
+    "duration": "Mar, 2024 - Present",
+    "details": [
+      {
+        "title": "Axiom - Design Library - React, Next, Storybook",
+        "points": [
+          "Collaborated on Axiom, an open-source design library for standardized UI/UX across Optimizely products.",
+          "Developed and integrated reusable components to ensure consistency and scalability.",
+          "Worked closely with cross-functional teams to align Axiom with product goals."
+        ]
+      },
+      {
+        "title": "Content Marketing Platform - Enterprise SaaS tool",
+        "points": [
+          "Built features and reviewed TypeScript code for CMP which is used by companies such as Shell and Xerox."
+        ]
+      }
+    ],
+    "link": "https://github.com/OptimizelyJaf107"
+  },
+  {
+    "company": "Orion Informatics Ltd, Dhaka",
+    "position": "Software Engineer",
+    "duration": "Jul, 2023 - Jan 2024",
+    "details": [
+      {
+        "title": "Attendance Management System",
+        "points": [
+          "Created custom graphs and filters to enhance data analysis and reporting."
+        ]
+      },
+      {
+        "title": "Automated Trading System",
+        "points": [
+          "Developed a TradeStation API for real-time stock data; built and deployed the project on Azure using .NET."
+        ]
+      }
+    ]
+  }
+]

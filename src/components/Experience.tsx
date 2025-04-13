@@ -3,6 +3,7 @@ import React from 'react';
 import { ExternalLink, Calendar } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import experienceData from '../data/experience.json';
 
 interface ExperienceItemProps {
   company: string;
@@ -51,44 +52,29 @@ const Experience = () => {
         <h2 className="section-title">Experience</h2>
         
         <div className="mt-10 grid gap-6 staggered-animate">
-          <ExperienceItem
-            company="Optimizely, Dhaka"
-            position="Software Engineer I"
-            duration="Mar, 2024 - Present"
-            description={
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">Axiom - Design Library - React, Next, Storybook</h3>
-                <ul className="space-y-2 list-disc pl-5">
-                  <li>Collaborated on Axiom, an open-source design library for standardized UI/UX across Optimizely products.</li>
-                  <li>Developed and integrated reusable components to ensure consistency and scalability.</li>
-                  <li>Worked closely with cross-functional teams to align Axiom with product goals.</li>
-                </ul>
-                <h3 className="text-lg font-semibold mt-4">Content Marketing Platform - Enterprise SaaS tool</h3>
-                <ul className="space-y-2 list-disc pl-5">
-                  <li>Built features and reviewed TypeScript code for CMP which is used by companies such as Shell and Xerox.</li>
-                </ul>
-              </div>
-            }
-            link="https://github.com/OptimizelyJaf107"
-          />
-          
-          <ExperienceItem
-            company="Orion Informatics Ltd, Dhaka"
-            position="Software Engineer"
-            duration="Jul, 2023 - Jan 2024"
-            description={
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">Attendance Management System</h3>
-                <ul className="space-y-2 list-disc pl-5">
-                  <li>Created custom graphs and filters to enhance data analysis and reporting.</li>
-                </ul>
-                <h3 className="text-lg font-semibold mt-4">Automated Trading System</h3>
-                <ul className="space-y-2 list-disc pl-5">
-                  <li>Developed a TradeStation API for real-time stock data; built and deployed the project on Azure using .NET.</li>
-                </ul>
-              </div>
-            }
-          />
+          {experienceData.map((exp, index) => (
+            <ExperienceItem
+              key={index}
+              company={exp.company}
+              position={exp.position}
+              duration={exp.duration}
+              description={
+                <div className="space-y-3">
+                  {exp.details.map((detail, detailIndex) => (
+                    <React.Fragment key={detailIndex}>
+                      <h3 className="text-lg font-semibold">{detail.title}</h3>
+                      <ul className="space-y-2 list-disc pl-5">
+                        {detail.points.map((point, pointIndex) => (
+                          <li key={pointIndex}>{point}</li>
+                        ))}
+                      </ul>
+                    </React.Fragment>
+                  ))}
+                </div>
+              }
+              link={exp.link}
+            />
+          ))}
         </div>
       </div>
     </section>

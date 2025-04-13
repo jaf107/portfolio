@@ -1,0 +1,36 @@
+
+{
+  "categories": [
+    {
+      "title": "Programming Languages",
+      "icon": "Code",
+      "skills": ["Python", "C#", "C++", "Java", "JavaScript", "TypeScript"]
+    },
+    {
+      "title": "Concepts",
+      "icon": "Terminal",
+      "skills": ["OOP", "REST API", "Design Patterns", "SOA", "Microservices"]
+    },
+    {
+      "title": "Web Frameworks",
+      "icon": "Layout",
+      "skills": [".NET", "ReactJS", "SpringBoot", "NodeJS", "Next.js", "Express"]
+    },
+    {
+      "title": "Databases",
+      "icon": "Database",
+      "skills": ["MSSQL", "MongoDB", "MySQL", "PostgreSQL"]
+    },
+    {
+      "title": "Tools",
+      "icon": "Wrench",
+      "skills": ["Git", "Postman", "Azure", "Docker", "Nginx", "AWS", "CI/CD"]
+    },
+    {
+      "title": "Soft Skills",
+      "icon": "Server",
+      "skills": ["Problem Solving", "Team Collaboration", "Agile Development", "Technical Writing"]
+    }
+  ],
+  "problemSolving": "Problem Solving: Solved 600+ problems in CodeForces, Leetcode"
+}
