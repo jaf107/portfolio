@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
@@ -12,7 +11,7 @@ import {
   Brain,
   User,
   ListCollapse,
-  FileText
+  FileText,
 } from "lucide-react";
 import Experience from "./Experience";
 import Projects from "./Projects";
@@ -22,7 +21,6 @@ import Awards from "./Awards";
 import Education from "./Education";
 import Contact from "./Contact";
 import Hero from "./Hero";
-import Resume from "./Resume";
 import {
   Sidebar,
   Nav,
@@ -34,7 +32,7 @@ import {
   Avatar,
   Text,
 } from "@optiaxiom/react";
-import navigationData from '../data/navigation.json';
+import navigationData from "../data/navigation.json";
 
 const SectionTabs = () => {
   const { theme, setTheme } = useTheme();
@@ -59,23 +57,23 @@ const SectionTabs = () => {
   // Get icon component based on icon name from navigation data
   const getIconComponent = (iconName) => {
     switch (iconName) {
-      case 'User':
+      case "User":
         return <User size={20} />;
-      case 'Briefcase':
+      case "Briefcase":
         return <Briefcase size={20} />;
-      case 'Code':
+      case "Code":
         return <Code size={20} />;
-      case 'Brain':
+      case "Brain":
         return <Brain size={20} />;
-      case 'Sparkles':
+      case "Sparkles":
         return <Sparkles size={20} />;
-      case 'Award':
+      case "Award":
         return <Award size={20} />;
-      case 'GraduationCap':
+      case "GraduationCap":
         return <GraduationCap size={20} />;
-      case 'FileText':
+      case "FileText":
         return <FileText size={20} />;
-      case 'Mail':
+      case "Mail":
         return <Mail size={20} />;
       default:
         return <User size={20} />;
@@ -99,8 +97,6 @@ const SectionTabs = () => {
         return <Awards />;
       case "education":
         return <Education />;
-      case "resume":
-        return <Resume />;
       case "contact":
         return <Contact />;
       default:
