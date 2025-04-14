@@ -9,7 +9,7 @@ import '@testing-library/jest-dom';
 describe('ThemeToggle', () => {
   it('renders correctly', () => {
     render(
-      <ThemeProvider defaultTheme="light" storageKey="theme">
+      <ThemeProvider>
         <ThemeToggle />
       </ThemeProvider>
     );
@@ -22,7 +22,7 @@ describe('ThemeToggle', () => {
     const user = userEvent.setup();
     
     render(
-      <ThemeProvider defaultTheme="light" storageKey="theme">
+      <ThemeProvider>
         <ThemeToggle />
       </ThemeProvider>
     );
@@ -35,3 +35,4 @@ describe('ThemeToggle', () => {
     // but we can at least verify the click handler runs without errors
   });
 });
+
