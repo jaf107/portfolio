@@ -8,7 +8,9 @@ const Education = () => {
   return (
     <section id="education" className="py-16 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Education</h2>
+        <h2 className="section-title">
+          <span className="font-bold">Education</span>
+        </h2>
         
         <div className="mt-10 max-w-2xl mx-auto space-y-6 animate-fade-in">
           {educationData.map((education, index) => (
@@ -22,13 +24,17 @@ const Education = () => {
                       <School size={20} className="text-primary" />
                     )}
                     <div>
-                      <CardTitle className="text-xl">{education.institution}</CardTitle>
-                      <CardDescription className="text-base">{education.degree}</CardDescription>
+                      <CardTitle className="text-xl">
+                        <span className="font-bold">{education.institution}</span>
+                      </CardTitle>
+                      <CardDescription className="text-base font-medium">
+                        {education.degree}
+                      </CardDescription>
                     </div>
                   </div>
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
                     <Calendar size={14} />
-                    <span>{education.duration}</span>
+                    <span className="font-semibold">{education.duration}</span>
                   </div>
                 </div>
               </CardHeader>
@@ -36,13 +42,15 @@ const Education = () => {
                 <div className="space-y-3">
                   <div className="flex items-center gap-1 text-sm">
                     <MapPin size={14} className="text-muted-foreground" />
-                    <span>{education.location}</span>
+                    <span className="font-medium">{education.location}</span>
                   </div>
-                  <p className="text-muted-foreground">GPA — {education.gpa}</p>
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold">GPA —</span> {education.gpa}
+                  </p>
                   {education.department && (
                     <div className="flex items-center gap-1">
                       <Award size={14} className="text-primary" />
-                      <span className="text-sm">{education.department}</span>
+                      <span className="text-sm font-medium">{education.department}</span>
                     </div>
                   )}
                   <p className="text-sm text-muted-foreground">

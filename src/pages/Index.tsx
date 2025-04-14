@@ -17,7 +17,8 @@ const Index = () => {
       { threshold: 0.1 }
     );
 
-    const hiddenElements = document.querySelectorAll('section > div');
+    // Target all section content divs and staggered elements
+    const hiddenElements = document.querySelectorAll('section > div, .staggered-animate > *');
     hiddenElements.forEach((el) => observer.observe(el));
 
     return () => {

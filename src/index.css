@@ -101,6 +101,7 @@
 
 .staggered-animate > * {
   opacity: 0;
+  transform: translateY(10px);
 }
 
 .staggered-animate > *:nth-child(1) {
@@ -129,4 +130,27 @@
 
 .staggered-animate > *:nth-child(n+7) {
   animation: fade-in 0.5s ease-out 0.7s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge-hover {
+  @apply transition-colors duration-200 hover:bg-primary/20;
+}
+
+.bold-highlight {
+  @apply font-bold text-primary;
+}
+
+.card-inner {
+  @apply h-full transition-all duration-300 overflow-hidden;
 }

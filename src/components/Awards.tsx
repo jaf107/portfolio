@@ -17,9 +17,13 @@ const AwardItem: React.FC<AwardItemProps> = ({ title, description, year }) => {
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-2">
             <Trophy size={20} className="text-yellow-500" />
-            <CardTitle className="text-lg">{title}</CardTitle>
+            <CardTitle className="text-lg">
+              <span className="font-bold">{title}</span>
+            </CardTitle>
           </div>
-          <CardDescription>{year}</CardDescription>
+          <CardDescription>
+            <span className="font-semibold">{year}</span>
+          </CardDescription>
         </div>
       </CardHeader>
       <CardContent>
@@ -33,7 +37,9 @@ const Awards = () => {
   return (
     <section id="awards" className="py-16">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Awards & Achievements</h2>
+        <h2 className="section-title">
+          <span className="font-bold">Awards</span> & Achievements
+        </h2>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 staggered-animate">
           {awardsData.map((award, index) => (

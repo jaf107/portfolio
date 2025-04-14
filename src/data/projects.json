@@ -1,6 +1,21 @@
 
 [
   {
+    "title": "Opti-Retreat Voting System",
+    "description": "Developed a web-based voting application aimed at facilitating secure and efficient voting processes for organizational retreats.",
+    "technologies": ["React.js", "Supabase", "JavaScript", "HTML5", "CSS3", "Netlify"],
+    "githubLink": "https://github.com/jaf107/opti-retreat-voting-system",
+    "demoLink": null,
+    "achievements": [
+      "Role-Based Access Control: Implemented a system distinguishing between admin and regular users, ensuring appropriate access levels and enhancing security.",
+      "Controlled Voting Sessions: Enabled admins to activate or deactivate voting periods, preventing unauthorized voting and maintaining process integrity.",
+      "Enhanced Voting Efficiency: Designed and implemented a user-friendly interface that streamlined the voting process, reducing the time required for vote casting and tallying by approximately 40%.",
+      "Improved Data Accuracy: Integrated real-time validation mechanisms to ensure the integrity of votes cast, minimizing errors and discrepancies in the final results.",
+      "Scalable Architecture: Built the application using scalable components, allowing for easy adaptation to larger events or organizations with minimal additional development effort.",
+      "Deployment and Accessibility: Deployed the application on Netlify, ensuring high availability and accessibility for users across various devices and locations."
+    ]
+  },
+  {
     "title": "API Miners GPT",
     "description": "Engineered enhanced ChatGPT using OpenAI and Stable Diffusion APIs, featuring audio I/O, OCR, and a child book generator, with an integrated bookstore for content distribution.",
     "technologies": [".NET", "ReactJS", "OpenAI API", "Hackathon"],
@@ -19,6 +34,20 @@
     "description": "Developed web app with Status, Story services in a Service Oriented Architecture. Distributed system project.",
     "technologies": ["MERN", "NodeJS", "Docker", "Nginx"],
     "githubLink": "https://github.com/jaf107/MiniFacebook",
+    "demoLink": null
+  },
+  {
+    "title": "Text Summarizer Tool",
+    "description": "Research project where input text is summarized using extractive techniques.",
+    "technologies": ["Java", "JavaFX", "SPL 1"],
+    "githubLink": null,
+    "demoLink": null
+  },
+  {
+    "title": "Gomoku - AI",
+    "description": "A desktop game with AI opponent using minimax algorithm.",
+    "technologies": ["Python", "Minimax", "Alpha-Beta Pruning", "AI Project"],
+    "githubLink": null,
     "demoLink": null
   }
 ]

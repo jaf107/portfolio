@@ -13,17 +13,17 @@ interface SkillCategoryProps {
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({ title, icon, skills }) => {
   return (
-    <Card className="h-full">
+    <Card className="h-full card-hover">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           {icon}
-          {title}
+          <span className="font-bold">{title}</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill, index) => (
-            <Badge key={index} variant="outline" className="px-2.5 py-1 text-sm">
+            <Badge key={index} variant="outline" className="px-2.5 py-1 text-sm font-medium">
               {skill}
             </Badge>
           ))}
@@ -38,26 +38,28 @@ const Skills = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Code':
-        return <Code size={20} />;
+        return <Code size={20} className="text-primary" />;
       case 'Terminal':
-        return <Terminal size={20} />;
+        return <Terminal size={20} className="text-primary" />;
       case 'Layout':
-        return <Layout size={20} />;
+        return <Layout size={20} className="text-primary" />;
       case 'Database':
-        return <Database size={20} />;
+        return <Database size={20} className="text-primary" />;
       case 'Wrench':
-        return <Wrench size={20} />;
+        return <Wrench size={20} className="text-primary" />;
       case 'Server':
-        return <Server size={20} />;
+        return <Server size={20} className="text-primary" />;
       default:
-        return <Code size={20} />;
+        return <Code size={20} className="text-primary" />;
     }
   };
 
   return (
     <section id="skills" className="py-16 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Skills</h2>
+        <h2 className="section-title">
+          <span className="font-bold">Technical</span> Skills
+        </h2>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 staggered-animate">
           {skillsData.categories.map((category, index) => (
@@ -72,7 +74,7 @@ const Skills = () => {
 
         <div className="mt-10 text-center">
           <p className="text-muted-foreground">
-            {skillsData.problemSolving}
+            <span className="font-semibold">{skillsData.problemSolving}</span>
           </p>
         </div>
       </div>

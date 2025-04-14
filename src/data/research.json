@@ -8,19 +8,22 @@
       "points": [
         "Created a programming language-specific tokenizer to improve NLP model predictions",
         "Collaborated with the team on various research projects"
-      ]
+      ],
+      "link": "https://www.cs.wm.edu/~denys/teaching/semeru-lab/"
     }
   ],
   "projects": [
     {
       "title": "Text Summarizer Tool",
       "technologies": ["Java", "JavaFX", "SPL 1"],
-      "description": "Research project where input text is summarized using extractive techniques."
+      "description": "Research project where input text is summarized using extractive techniques.",
+      "link": null
     },
     {
       "title": "Clippy",
       "technologies": ["Angular", "NodeJS", "ICSE SCORE"],
-      "description": "Empowering paper reading with intelligent features like cross-referencing, summarization, and knowledge graph generation."
+      "description": "Empowering paper reading with intelligent features like cross-referencing, summarization, and knowledge graph generation.",
+      "link": null
     }
   ]
 }
