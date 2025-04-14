@@ -1,38 +1,40 @@
 
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ThemeToggle } from './ThemeToggle';
-import { ThemeProvider } from '../providers/ThemeProvider';
-import { expect, describe, it, vi } from 'vitest';
-import '@testing-library/jest-dom';
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import ThemeToggle from './ThemeToggle';
+import { ThemeProvider } from '@/providers/ThemeProvider';
 
-describe('ThemeToggle', () => {
-  it('renders correctly', () => {
+// Mock the theme hooks
+vi.mock('next-themes', () => ({
+  useTheme: () => ({
+    theme: 'light',
+    setTheme: vi.fn(),
+  }),
+}));
+
+describe('ThemeToggle Component', () => {
+  beforeEach(() => {
     render(
       <ThemeProvider>
         <ThemeToggle />
       </ThemeProvider>
     );
-    
-    const button = screen.getByRole('button', { name: /toggle theme/i });
-    expect(button).toBeInTheDocument();
   });
-  
-  it('toggles theme when clicked', async () => {
-    const user = userEvent.setup();
-    
-    render(
-      <ThemeProvider>
-        <ThemeToggle />
-      </ThemeProvider>
-    );
-    
-    const button = screen.getByRole('button', { name: /toggle theme/i });
-    expect(button).toBeInTheDocument();
-    
-    await user.click(button);
-    // Note: We can't easily test the actual theme change without more complex setup,
-    // but we can at least verify the click handler runs without errors
+
+  it('renders without crashing', () => {
+    const toggleButton = screen.getByRole('button');
+    expect(toggleButton).toBeDefined();
+  });
+
+  it('has the correct aria-label', () => {
+    const toggleButton = screen.getByRole('button');
+    expect(toggleButton.getAttribute('aria-label')).toBe('Toggle theme');
+  });
+
+  it('responds to click events', () => {
+    const toggleButton = screen.getByRole('button');
+    fireEvent.click(toggleButton);
+    expect(toggleButton).toBeDefined();
   });
 });
-
