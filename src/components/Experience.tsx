@@ -1,11 +1,10 @@
-
-import React from 'react';
-import { ExternalLink, Calendar, Briefcase, MapPin } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import experienceData from '../data/experience.json';
+import React from "react";
+import { ExternalLink, Calendar, Briefcase, MapPin } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import experienceData from "../data/experience.json";
 
 interface ExperienceItemProps {
   company: string;
@@ -18,9 +17,14 @@ interface ExperienceItemProps {
   }[];
 }
 
-const ExperienceCard: React.FC<ExperienceItemProps> = ({ company, position, duration, details }) => {
+const ExperienceCard: React.FC<ExperienceItemProps> = ({
+  company,
+  position,
+  duration,
+  details,
+}) => {
   // Extract company name and location if provided in format "Company, Location"
-  const [companyName, location] = company.split(', ');
+  const [companyName, location] = company.split(", ");
 
   return (
     <Card className="card-hover overflow-hidden border-l-4 border-l-primary">
@@ -44,16 +48,19 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({ company, position, dura
               )}
             </div>
           </div>
-          <Badge variant="outline" className="flex items-center gap-1 px-2 py-1 h-auto">
+          <Badge
+            variant="outline"
+            className="flex items-center gap-1 px-2 py-1 h-auto"
+          >
             <Calendar size={14} />
             <span>{duration}</span>
           </Badge>
         </div>
       </CardHeader>
-      <CardContent className="pt-4">
+      <CardContent className="pt-4 ml-4">
         {details.map((detail, detailIndex) => (
-          <div 
-            key={detailIndex} 
+          <div
+            key={detailIndex}
             className={`space-y-3 ${detailIndex > 0 ? "mt-6" : ""}`}
           >
             <div className="flex justify-between items-center">
@@ -61,8 +68,17 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({ company, position, dura
                 {detail.title}
               </h3>
               {detail.link && (
-                <Button variant="ghost" size="sm" asChild className="gap-1 text-primary">
-                  <a href={detail.link} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="gap-1 text-primary"
+                >
+                  <a
+                    href={detail.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span>View</span>
                     <ExternalLink size={14} />
                   </a>
@@ -70,7 +86,7 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({ company, position, dura
               )}
             </div>
             {detail.points.length > 0 && (
-              <ul className="space-y-2 pl-5">
+              <ul className="space-y-2 pl-5 ml-6">
                 {detail.points.map((point, pointIndex) => (
                   <li key={pointIndex} className="relative pl-1">
                     <span className="absolute left-[-1rem] top-[0.6rem] h-1.5 w-1.5 rounded-full bg-primary/70"></span>
@@ -96,7 +112,7 @@ const Experience = () => {
             My professional journey and contributions to various projects
           </p>
         </div>
-        
+
         <div className="mt-10 grid gap-8 staggered-animate">
           {experienceData.map((exp, index) => (
             <ExperienceCard
