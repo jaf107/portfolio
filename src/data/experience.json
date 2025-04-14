@@ -33,13 +33,39 @@
       {
         "title": "Attendance Management System",
         "points": [
-          "Created custom graphs and filters to enhance data analysis and reporting."
+          "Developed dynamic and interactive dashboards using Chart.js, implementing custom graphs and filters to improve data analysis and administrative reporting efficiency."
         ]
       },
       {
         "title": "Automated Trading System",
         "points": [
-          "Developed a TradeStation API for real-time stock data; built and deployed the project on Azure using .NET."
+          "Designed and implemented a RESTful API in ASP.NET Core to connect TradeStation webhooks with execution logic, enabling real-time stock trade automation.",
+          "Deployed the service to Microsoft Azure using App Services and conducted end-to-end API testing with Postman; integrated secure FTP server monitoring using FileZilla."
+        ]
+      },
+      {
+        "title": "Remote Patient Management System",
+        "points": [
+          "Built a cost-effective prototype for a non-invasive glucometer using Arduino and infrared sensors, programmed with Arduino IDE to measure glucose levels in real-time."
+        ]
+      },
+      {
+        "title": "Bangladesh University Admin Dashboard",
+        "points": [
+          "Developed interactive data visualizations using Chart.js within an ASP.NET MVC framework to help stakeholders analyze academic metrics effectively."
+        ]
+      },
+      {
+        "title": "SME Client Website (Frontend)",
+        "points": [
+          "Collaborated with the frontend team to implement UI changes and client-requested design updates using HTML, CSS, and jQuery, improving overall user experience."
+        ]
+      },
+      {
+        "title": "AI ECG Dataset preparation",
+        "points": [
+          "Processed and cleaned ECG datasets using Python for machine learning model preparation.",
+          "Automated file organization, renaming, and validation tasks using console scripting to ensure data consistency and quality."
         ]
       }
     ]
