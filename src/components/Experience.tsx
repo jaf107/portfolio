@@ -1,78 +1,110 @@
 
 import React from 'react';
-import { ExternalLink, Calendar } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { ExternalLink, Calendar, Briefcase, MapPin } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 import experienceData from '../data/experience.json';
 
 interface ExperienceItemProps {
   company: string;
   position: string;
   duration: string;
-  description: React.ReactNode;
-  link?: string;
+  details: {
+    title: string;
+    link?: string;
+    points: string[];
+  }[];
 }
 
-const ExperienceItem: React.FC<ExperienceItemProps> = ({ company, position, duration, description, link }) => {
+const ExperienceCard: React.FC<ExperienceItemProps> = ({ company, position, duration, details }) => {
+  // Extract company name and location if provided in format "Company, Location"
+  const [companyName, location] = company.split(', ');
+
   return (
-    <Card className="card-hover">
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start">
-          <div>
-            <CardTitle className="text-xl">{position}</CardTitle>
-            <CardDescription className="text-lg font-medium">{company}</CardDescription>
+    <Card className="card-hover overflow-hidden border-l-4 border-l-primary">
+      <CardHeader className="pb-2 bg-muted/30">
+        <div className="flex justify-between items-start flex-wrap gap-2">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <Briefcase className="h-4 w-4 text-primary" />
+              <CardTitle className="text-xl">{position}</CardTitle>
+            </div>
+            <div className="flex items-center gap-2 text-lg font-medium text-muted-foreground">
+              {companyName}
+              {location && (
+                <>
+                  <span className="text-muted-foreground/50">•</span>
+                  <div className="flex items-center gap-1 text-sm">
+                    <MapPin size={14} className="text-muted-foreground/70" />
+                    <span>{location}</span>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+          <Badge variant="outline" className="flex items-center gap-1 px-2 py-1 h-auto">
             <Calendar size={14} />
             <span>{duration}</span>
-          </div>
+          </Badge>
         </div>
       </CardHeader>
-      <CardContent>
-        {description}
+      <CardContent className="pt-4">
+        {details.map((detail, detailIndex) => (
+          <div 
+            key={detailIndex} 
+            className={`space-y-3 ${detailIndex > 0 ? "mt-6" : ""}`}
+          >
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold text-foreground/90 flex items-center gap-2">
+                {detail.title}
+              </h3>
+              {detail.link && (
+                <Button variant="ghost" size="sm" asChild className="gap-1 text-primary">
+                  <a href={detail.link} target="_blank" rel="noopener noreferrer">
+                    <span>View</span>
+                    <ExternalLink size={14} />
+                  </a>
+                </Button>
+              )}
+            </div>
+            {detail.points.length > 0 && (
+              <ul className="space-y-2 pl-5">
+                {detail.points.map((point, pointIndex) => (
+                  <li key={pointIndex} className="relative pl-1">
+                    <span className="absolute left-[-1rem] top-[0.6rem] h-1.5 w-1.5 rounded-full bg-primary/70"></span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </CardContent>
-      {link && (
-        <CardFooter>
-          <Button variant="ghost" size="sm" asChild className="gap-1">
-            <a href={link} target="_blank" rel="noopener noreferrer">
-              <span>View Project</span>
-              <ExternalLink size={14} />
-            </a>
-          </Button>
-        </CardFooter>
-      )}
     </Card>
   );
 };
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 bg-secondary/50">
+    <section id="experience" className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Experience</h2>
+        <div className="text-center mb-10">
+          <h2 className="section-title mx-auto">Professional Experience</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+            My professional journey and contributions to various projects
+          </p>
+        </div>
         
-        <div className="mt-10 grid gap-6 staggered-animate">
+        <div className="mt-10 grid gap-8 staggered-animate">
           {experienceData.map((exp, index) => (
-            <ExperienceItem
+            <ExperienceCard
               key={index}
               company={exp.company}
               position={exp.position}
               duration={exp.duration}
-              description={
-                <div className="space-y-3">
-                  {exp.details.map((detail, detailIndex) => (
-                    <React.Fragment key={detailIndex}>
-                      <h3 className="text-lg font-semibold">{detail.title}</h3>
-                      <ul className="space-y-2 list-disc pl-5">
-                        {detail.points.map((point, pointIndex) => (
-                          <li key={pointIndex}>{point}</li>
-                        ))}
-                      </ul>
-                    </React.Fragment>
-                  ))}
-                </div>
-              }
-              link={exp.link}
+              details={exp.details}
             />
           ))}
         </div>

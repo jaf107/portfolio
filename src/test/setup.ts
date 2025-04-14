@@ -17,11 +17,11 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-// Silence console errors during tests
+// Mock IntersectionObserver
 beforeAll(() => {
-  console.error = vi.fn();
-});
-
-afterAll(() => {
-  vi.clearAllMocks();
+  window.IntersectionObserver = vi.fn().mockImplementation(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  }));
 });
