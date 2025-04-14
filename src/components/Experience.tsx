@@ -1,11 +1,18 @@
-
 import React from "react";
-import { ExternalLink, Calendar, Briefcase, MapPin, ArrowUpRight } from "lucide-react";
+import { Calendar, Briefcase, MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+// import { Button } from "@/components/ui/button";
+// import { Badge } from "@/components/ui/badge";
 import experienceData from "../data/experience.json";
+import {
+  Disclosure,
+  DisclosureContent,
+  Badge,
+  DisclosureTrigger,
+  Flex,
+  Link,
+  Button,
+} from "@optiaxiom/react";
 
 interface RoleDetails {
   title: string;
@@ -21,21 +28,30 @@ interface Role {
 
 interface ExperienceItem {
   company: string;
+  companyLink: string;
   roles: Role[];
 }
 
-const ExperienceCard: React.FC<ExperienceItem> = ({ company, roles }) => {
+const ExperienceCard: React.FC<ExperienceItem> = ({
+  company,
+  companyLink,
+  roles,
+}) => {
   // Extract company name and location if provided in format "Company, Location"
   const [companyName, location] = company.split(", ");
 
   return (
-    <Card className="card-hover overflow-hidden border-l-4 border-l-primary">
+    <Card className="card-hover overflow-hidden ">
       <CardHeader className="pb-2 bg-muted/30">
         <div className="flex justify-between items-start flex-wrap gap-2">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-lg font-medium text-foreground">
               <Briefcase className="h-5 w-5 text-primary" />
-              <span className="font-bold">{companyName}</span>
+
+              <Link href={companyLink} className="font-bold text-xl">
+                {companyName}
+              </Link>
+
               {location && (
                 <>
                   <span className="text-muted-foreground/50">•</span>
@@ -51,66 +67,67 @@ const ExperienceCard: React.FC<ExperienceItem> = ({ company, roles }) => {
       </CardHeader>
       <CardContent className="pt-4">
         {roles.map((role, roleIndex) => (
-          <div key={roleIndex} className={roleIndex > 0 ? "mt-6 pt-6 border-t border-border/50" : ""}>
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-2">
-                {roleIndex > 0 && (
-                  <ArrowUpRight size={16} className="text-primary rotate-90 ml-[-4px]" />
-                )}
-                <CardTitle className="text-xl">
-                  <span className="font-bold">{role.position}</span>
-                </CardTitle>
-              </div>
-              <Badge
-                variant="outline"
-                className="flex items-center gap-1 px-2 py-1 h-auto"
-              >
-                <Calendar size={14} />
-                <span className="font-semibold">{role.duration}</span>
-              </Badge>
-            </div>
+          <div
+            key={roleIndex}
+            className={
+              roleIndex > 0 ? "mt-6 pt-6 border-t border-border/50" : ""
+            }
+          >
+            <Disclosure defaultOpen>
+              <DisclosureTrigger chevronPosition="end">
+                <Flex flexDirection={"row"} justifyContent={"space-between"}>
+                  <Flex justifyItems={"center"} gap={"2"} flexDirection={"row"}>
+                    <CardTitle className="text-xl">
+                      <span className="font-bold">{role.position}</span>
+                    </CardTitle>
+                  </Flex>
 
-            <div className="ml-4">
-              {role.details.map((detail, detailIndex) => (
-                <div
-                  key={detailIndex}
-                  className={`space-y-3 ${detailIndex > 0 ? "mt-6" : ""}`}
-                >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold text-foreground/90 flex items-center gap-2">
-                      <span className="font-bold">{detail.title}</span>
-                    </h3>
-                    {detail.link && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        asChild
-                        className="gap-1 text-primary"
-                      >
-                        <a
-                          href={detail.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <span className="font-semibold">View</span>
-                          <ExternalLink size={14} />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                  {detail.points.length > 0 && (
-                    <ul className="space-y-2 pl-5 ml-6">
-                      {detail.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="relative pl-1">
-                          <span className="absolute left-[-1rem] top-[0.6rem] h-1.5 w-1.5 rounded-full bg-primary/70"></span>
-                          <span className="font-medium">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <Badge className="flex items-center gap-1 px-2 py-1 h-auto">
+                    <Calendar size={14} />
+                    <span className="font-semibold">{role.duration}</span>
+                  </Badge>
+                </Flex>
+                {/* </div> */}
+              </DisclosureTrigger>
+              <DisclosureContent>
+                <div className="ml-4">
+                  {role.details.map((detail, detailIndex) => (
+                    <div
+                      key={detailIndex}
+                      className={`space-y-3 ${detailIndex > 0 ? "mt-6" : ""}`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-foreground/90 flex items-center gap-2">
+                          <span className="font-bold">{detail.title}</span>
+                        </h3>
+                        {detail.link && (
+                          <Button size="sm" asChild>
+                            <Link
+                              href={detail.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              external
+                            >
+                              View
+                            </Link>
+                          </Button>
+                        )}
+                      </div>
+                      {detail.points.length > 0 && (
+                        <ul className="space-y-2 pl-5 ml-6">
+                          {detail.points.map((point, pointIndex) => (
+                            <li key={pointIndex} className="relative pl-1">
+                              <span className="absolute left-[-1rem] top-[0.6rem] h-1.5 w-1.5 rounded-full bg-primary/70"></span>
+                              <span className="font-medium">{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </DisclosureContent>
+            </Disclosure>
           </div>
         ))}
       </CardContent>
@@ -128,7 +145,8 @@ const Experience = () => {
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
             My <span className="font-semibold">professional journey</span> and{" "}
-            <span className="font-semibold">career progression</span> across organizations
+            <span className="font-semibold">career progression</span> across
+            organizations
           </p>
         </div>
 
@@ -137,6 +155,7 @@ const Experience = () => {
             <ExperienceCard
               key={index}
               company={exp.company}
+              companyLink={exp.companyLink}
               roles={exp.roles}
             />
           ))}

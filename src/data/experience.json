@@ -1,7 +1,7 @@
-
 [
   {
     "company": "Optimizely, Dhaka",
+    "companyLink": "http://optimizely.com/",
     "roles": [
       {
         "position": "Software Engineer I",
@@ -32,22 +32,16 @@
   },
   {
     "company": "Orion Informatics Ltd, Dhaka",
+    "companyLink": "http://onirban.net/",
     "roles": [
       {
         "position": "Software Engineer",
-        "duration": "Oct, 2023 - Jan 2024",
+        "duration": "Jul, 2023 - Jan 2024",
         "details": [
           {
             "title": "Attendance Management System",
             "points": [
               "Developed dynamic and interactive dashboards using Chart.js, implementing custom graphs and filters to improve data analysis and administrative reporting efficiency."
-            ]
-          },
-          {
-            "title": "Automated Trading System",
-            "points": [
-              "Designed and implemented a RESTful API in ASP.NET Core to connect TradeStation webhooks with execution logic, enabling real-time stock trade automation.",
-              "Deployed the service to Microsoft Azure using App Services and conducted end-to-end API testing with Postman; integrated secure FTP server monitoring using FileZilla."
             ]
           },
           {
@@ -59,9 +53,16 @@
         ]
       },
       {
-        "position": "Junior Software Engineer",
-        "duration": "Jul, 2023 - Sep 2023",
+        "position": "Software Engineering Intern",
+        "duration": "Jan, 2023 - June 2023",
         "details": [
+          {
+            "title": "Automated Trading System",
+            "points": [
+              "Designed and implemented a RESTful API in ASP.NET Core to connect TradeStation webhooks with execution logic, enabling real-time stock trade automation.",
+              "Deployed the service to Microsoft Azure using App Services and conducted end-to-end API testing with Postman; integrated secure FTP server monitoring using FileZilla."
+            ]
+          },
           {
             "title": "Remote Patient Management System",
             "points": [
