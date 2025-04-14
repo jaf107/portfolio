@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ExternalLink, Calendar, Briefcase, MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,16 +34,18 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <Briefcase className="h-4 w-4 text-primary" />
-              <CardTitle className="text-xl">{position}</CardTitle>
+              <CardTitle className="text-xl">
+                <span className="font-bold">{position}</span>
+              </CardTitle>
             </div>
             <div className="flex items-center gap-2 text-lg font-medium text-muted-foreground">
-              {companyName}
+              <span className="font-semibold">{companyName}</span>
               {location && (
                 <>
                   <span className="text-muted-foreground/50">•</span>
                   <div className="flex items-center gap-1 text-sm">
                     <MapPin size={14} className="text-muted-foreground/70" />
-                    <span>{location}</span>
+                    <span className="font-medium">{location}</span>
                   </div>
                 </>
               )}
@@ -53,7 +56,7 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({
             className="flex items-center gap-1 px-2 py-1 h-auto"
           >
             <Calendar size={14} />
-            <span>{duration}</span>
+            <span className="font-semibold">{duration}</span>
           </Badge>
         </div>
       </CardHeader>
@@ -65,7 +68,7 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({
           >
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-foreground/90 flex items-center gap-2">
-                {detail.title}
+                <span className="font-bold">{detail.title}</span>
               </h3>
               {detail.link && (
                 <Button
@@ -79,7 +82,7 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>View</span>
+                    <span className="font-semibold">View</span>
                     <ExternalLink size={14} />
                   </a>
                 </Button>
@@ -90,7 +93,7 @@ const ExperienceCard: React.FC<ExperienceItemProps> = ({
                 {detail.points.map((point, pointIndex) => (
                   <li key={pointIndex} className="relative pl-1">
                     <span className="absolute left-[-1rem] top-[0.6rem] h-1.5 w-1.5 rounded-full bg-primary/70"></span>
-                    {point}
+                    <span className="font-medium">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -107,9 +110,12 @@ const Experience = () => {
     <section id="experience" className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10">
-          <h2 className="section-title mx-auto">Professional Experience</h2>
+          <h2 className="section-title mx-auto">
+            <span className="font-bold">Professional</span> Experience
+          </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
-            My professional journey and contributions to various projects
+            My <span className="font-semibold">professional journey</span> and{" "}
+            <span className="font-semibold">contributions</span> to various projects
           </p>
         </div>
 
