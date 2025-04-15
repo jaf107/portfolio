@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,7 +86,7 @@
 }
 
 .section-title {
-  @apply text-2xl md:text-3xl font-bold mb-6 text-primary relative inline-block;
+  @apply text-2xl md:text-3xl font-bold mb-6 text-primary relative inline-block text-center mx-auto;
 }
 
 .section-title::after {
@@ -95,9 +94,8 @@
   @apply block absolute w-1/2 h-1 bg-accent mt-1 left-1/4;
 }
 
-/* Ensure all section titles are centered */
 h2.section-title {
-  @apply mx-auto;
+  @apply text-center;
 }
 
 .card-hover {
