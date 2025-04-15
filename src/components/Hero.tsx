@@ -1,3 +1,4 @@
+
 import {
   Github,
   Linkedin,
@@ -8,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aboutData from "../data/about.json";
+import Logo from "./Logo";
 
 const Hero = () => {
   const { name, title, bio, phone, email, socialLinks } = aboutData;
@@ -76,11 +78,7 @@ const Hero = () => {
             <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10"></div>
           </div>
           <div className="w-full md:w-2/5 flex justify-center md:justify-end animate-fade-in">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
-              <div className="absolute inset-4 bg-background dark:bg-slate-900 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-6xl font-bold text-primary">AJ</span>
-              </div>
-            </div>
+            <Logo size={240} />
           </div>
         </div>
       </div>

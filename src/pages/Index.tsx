@@ -21,15 +21,6 @@ const Index = () => {
     const hiddenElements = document.querySelectorAll('section > div, .staggered-animate > *');
     hiddenElements.forEach((el) => observer.observe(el));
 
-    // Apply title centering styles to all section titles
-    const sectionTitles = document.querySelectorAll('.section-title');
-    sectionTitles.forEach((title) => {
-      const parent = title.parentElement;
-      if (parent && !parent.classList.contains('flex')) {
-        parent.classList.add('flex', 'justify-center');
-      }
-    });
-
     return () => {
       hiddenElements.forEach((el) => observer.unobserve(el));
     };

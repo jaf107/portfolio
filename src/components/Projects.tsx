@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Github, ExternalLink, Code, ChevronDown, ChevronUp } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -5,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import projectsData from '../data/projects.json';
+
 interface ProjectItemProps {
   title: string;
   description: string;
@@ -13,6 +15,7 @@ interface ProjectItemProps {
   demoLink?: string | null;
   achievements?: string[];
 }
+
 const ProjectItem: React.FC<ProjectItemProps> = ({
   title,
   description,
@@ -23,6 +26,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const hasAchievements = achievements && achievements.length > 0;
+  
   return <Card className="h-full flex flex-col card-hover">
       <CardHeader>
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
@@ -68,12 +72,18 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
       </CardFooter>
     </Card>;
 };
+
 const Projects = () => {
   return <section id="projects" className="py-16">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title text-center">
-          <span className="font-bold">Academic</span> Projects
-        </h2>
+        <div className="text-center mb-10">
+          <h2 className="section-title mx-auto">
+            <span className="font-bold">Academic</span> Projects
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+            A showcase of my academic and personal projects
+          </p>
+        </div>
         
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 staggered-animate">
           {projectsData.map((project, index) => <ProjectItem key={index} title={project.title} description={project.description} technologies={project.technologies} githubLink={project.githubLink} demoLink={project.demoLink} achievements={project.achievements} />)}
@@ -81,4 +91,5 @@ const Projects = () => {
       </div>
     </section>;
 };
+
 export default Projects;

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
@@ -21,6 +22,7 @@ import Awards from "./Awards";
 import Education from "./Education";
 import Contact from "./Contact";
 import Hero from "./Hero";
+import Logo from "./Logo";
 import {
   Sidebar,
   Nav,
@@ -29,7 +31,6 @@ import {
   NavHeader,
   NavItem,
   SidebarToggle,
-  Avatar,
   Text,
 } from "@optiaxiom/react";
 import navigationData from "../data/navigation.json";
@@ -109,7 +110,7 @@ const SectionTabs = () => {
       <Sidebar defaultExpanded>
         <Nav>
           <NavHeader alignItems={"start"} my="4">
-            <NavItem icon={<Avatar src="/logo.png" />}>
+            <NavItem icon={<Logo size={40} />}>
               <Text fontSize="lg" fontWeight="700">
                 Abu Jafar
               </Text>
